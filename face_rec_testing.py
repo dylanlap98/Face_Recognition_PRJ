@@ -1,6 +1,13 @@
 import face_recognition
 import os
 import cv2
+import pickle
+
+# save pickle files into lists for use
+with open('pickle_files/known_face_pickle.pkl', 'rb') as known_face_pickle:
+    known_faces = pickle.load(known_face_pickle)
+with open('pickle_files/known_name_pickle.pkl', 'rb') as known_name_pickle:
+    known_names = pickle.load(known_name_pickle)
 
 KNOWN_FACES_DIR = "known_faces"
 UNKNOWN_FACES_DIR = "unknown_faces"
@@ -8,22 +15,6 @@ TOLERANCE = 0.6  # default is 0.6
 FRAME_THICKNESS = 3
 FONT_THICKNESS = 2
 MODEL = "hog"  # can also use 'hog' cnn runs slower on only cpu than hog
-
-print("loading known faces:")
-
-known_faces = []
-known_names = []
-
-for name in os.listdir(KNOWN_FACES_DIR):
-    print(name)
-    for filename in os.listdir(f"{KNOWN_FACES_DIR}/{name}"):
-        image = face_recognition.load_image_file(f"{KNOWN_FACES_DIR}/{name}/{filename}")
-        encoding = face_recognition.face_encodings(image)[0]
-        known_faces.append(encoding)
-        known_names.append(name)
-    print("Finished training:", name)
-
-print("processing unknown faces:")
 
 for filename in os.listdir(UNKNOWN_FACES_DIR):
     print(filename)
@@ -55,4 +46,3 @@ for filename in os.listdir(UNKNOWN_FACES_DIR):
     cv2.imshow(filename, image)  # Show name of file and then display image
     cv2.waitKey(0)  # miliseconds so this is 10 seconds: 10000
     cv2.destroyWindow(filename)
-
