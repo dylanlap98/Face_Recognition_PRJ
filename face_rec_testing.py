@@ -4,9 +4,9 @@ import cv2
 import pickle
 
 # save pickle files into lists for use
-with open('pickle_files/known_face_pickle.pkl', 'rb') as known_face_pickle:
+with open('pickle_files/known_face_pickle1.pkl', 'rb') as known_face_pickle:
     known_faces = pickle.load(known_face_pickle)
-with open('pickle_files/known_name_pickle.pkl', 'rb') as known_name_pickle:
+with open('pickle_files/known_name_pickle1.pkl', 'rb') as known_name_pickle:
     known_names = pickle.load(known_name_pickle)
 
 KNOWN_FACES_DIR = "known_faces"
