@@ -52,6 +52,20 @@ for filename in os.listdir(UNKNOWN_FACES_DIR):
             cv2.rectangle(image, top_left, bottom_right, color, cv2.FILLED) # second box to house text
             cv2.putText(image, match, (face_location[3]+10, face_location[2]+15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200,200,200), FONT_THICKNESS)
 
+        else:  # if no match but face detected.  This can help identify if issue is in recognition or detection
+            # Drawing rectangle:
+            top_left = (face_location[3], face_location[0])
+            bottom_right = (face_location[1], face_location[2])
+            color = [147, 132, 176]  # color of box if no match
+            cv2.rectangle(image, top_left, bottom_right, color, FRAME_THICKNESS)
+
+            top_left = (face_location[3], face_location[2])
+            bottom_right = (face_location[1], face_location[2] + 22)
+            cv2.rectangle(image, top_left, bottom_right, color, cv2.FILLED)  # second box to house text
+            cv2.putText(image, "Unknown Face", (face_location[3] + 10, face_location[2] + 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                        (200, 200, 200), FONT_THICKNESS)
+
+    # display image after process
     cv2.imshow(filename, image)  # Show name of file and then display image
     cv2.waitKey(0)  # miliseconds so this is 10 seconds: 10000
     cv2.destroyWindow(filename)
