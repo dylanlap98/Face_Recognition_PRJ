@@ -9,7 +9,7 @@ FRAME_THICKNESS = 3
 FONT_THICKNESS = 2
 MODEL = "hog"  # can also use 'hog' cnn runs slower on only cpu than hog
 
-video = cv2.VideoCapture(0) # could put in a video file too instead of a feed
+video = cv2.VideoCapture(0)  # could put in a video file instead of a webcam feed
 
 print("loading known faces:")
 
@@ -58,4 +58,5 @@ while True:
         break
     #cv2.waitKey(0)  # miliseconds so this is 10 seconds: 10000
     #cv2.destroyWindow(filename)
+
 
