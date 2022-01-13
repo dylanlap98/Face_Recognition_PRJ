@@ -65,7 +65,7 @@ for filename in os.listdir(UNKNOWN_FACES_DIR):
             cv2.putText(image, "Unknown Face", (face_location[3] + 10, face_location[2] + 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
                         (200, 200, 200), FONT_THICKNESS)
 
-    # display image after process
+    # display image after process is complete
     cv2.imshow(filename, image)  # Show name of file and then display image
     cv2.waitKey(0)  # miliseconds so this is 10 seconds: 10000
     cv2.destroyWindow(filename)
