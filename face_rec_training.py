@@ -34,3 +34,4 @@ with open('pickle_files/known_face_pickle1.pkl', 'wb') as known_face_pickle:
     pickle.dump(known_faces, known_face_pickle)
 with open('pickle_files/known_name_pickle1.pkl', 'wb') as known_name_pickle:
     pickle.dump(known_names, known_name_pickle)
+

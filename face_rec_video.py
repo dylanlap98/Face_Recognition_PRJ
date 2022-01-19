@@ -59,4 +59,3 @@ while True:
     #cv2.waitKey(0)  # miliseconds so this is 10 seconds: 10000
     #cv2.destroyWindow(filename)
 
-
